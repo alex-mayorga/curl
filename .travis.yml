@@ -66,14 +66,16 @@ before_script:
         cd build &&
         CXX="g++" CC="gcc" cmake -DCMAKE_BUILD_TYPE=release -DBUILD_SHARED_LIBS=1 .. &&
         make &&
-        CXX="g++" CC="gcc" cmake -DCMAKE_BUILD_TYPE=release .. &&
-        make &&
         cd .. &&
         mkdir lib &&
         cd lib &&
-        ln -s ../build/crypto/libcrypto.so . &&
-        ln -s ../build/ssl/libssl.so . &&
+        cp ../build/crypto/libcrypto.so . &&
+        cp ../build/ssl/libssl.so . &&
         echo "BoringSSL lib dir: "`pwd` &&
+        cd build &&
+        make clean && rm -f CMakeCache.txt &&
+        CXX="g++" CC="gcc" cmake -DCMAKE_BUILD_TYPE=release .. &&
+        make &&
         export LIBS=-lpthread )
       fi
     - |
