@@ -72,7 +72,7 @@ before_script:
         cp ../build/crypto/libcrypto.so . &&
         cp ../build/ssl/libssl.so . &&
         echo "BoringSSL lib dir: "`pwd` &&
-        cd build &&
+        cd ../build &&
         make clean && rm -f CMakeCache.txt &&
         CXX="g++" CC="gcc" cmake -DCMAKE_BUILD_TYPE=release .. &&
         make &&
