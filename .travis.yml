@@ -66,6 +66,8 @@ before_script:
         cd build &&
         CXX="g++" CC="gcc" cmake -DCMAKE_BUILD_TYPE=release -DBUILD_SHARED_LIBS=1 .. &&
         make &&
+        CXX="g++" CC="gcc" cmake -DCMAKE_BUILD_TYPE=release .. &&
+        make &&
         cd .. &&
         mkdir lib &&
         cd lib &&
