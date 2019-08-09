@@ -78,6 +78,7 @@ before_script:
       if [ "$TRAVIS_OS_NAME" = linux -a "QUICHE" ]; then
         (cd $HOME &&
         git clone --depth=1 https://github.com/cloudflare/quiche.git &&
+        source $HOME/.cargo/env && \
         cd quiche &&
         QUICHE_BSSL_PATH=$HOME/src/boringssl cargo build --release)
       fi
